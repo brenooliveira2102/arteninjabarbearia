@@ -6,15 +6,12 @@
     <title>Arte Ninja Barbearia</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Estilos personalizados */
         :root {
             --gold: #d8c680;
             --dark-bg: #121212;
@@ -24,99 +21,70 @@
             --text-muted: #a0a0a0;
             --border-color: #2a2a2a;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-light);
         }
-
-        .font-teko {
-            font-family: 'Teko', sans-serif;
-        }
-
+        .font-teko { font-family: 'Teko', sans-serif; }
         .bg-gold { background-color: var(--gold); }
         .text-gold { color: var(--gold); }
         .border-gold { border-color: var(--gold); }
-
         .btn {
             display: inline-block;
             padding: 12px 32px;
             border-radius: 4px;
-            text-align: center;
-            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
-        
         .btn-gold {
             background-color: var(--gold);
             color: var(--dark-bg);
         }
-
         .btn-gold:hover {
             background-color: #c9b56f;
             transform: translateY(-2px);
         }
-
         .section-title {
             font-family: 'Teko', sans-serif;
-            font-size: 3rem; /* 48px */
-            font-weight: 600;
+            font-size: 3rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: var(--gold);
+            letter-spacing: 1px;
+            font-weight: 600;
         }
-
-        .section-subtitle {
-            color: var(--text-muted);
-        }
-
-        .section-divider {
-            border-top: 1px solid var(--border-color);
-        }
-        
-        /* Oculta a barra de rolagem do carrossel */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
+        .section-subtitle { color: var(--text-muted); }
+        .section-divider { border-top: 1px solid var(--border-color); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-dark-bg text-text-light">
 
     <header class="bg-dark-bg/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-lg shadow-black/20">
         <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
-             <a href="#" class="flex items-center space-x-3">
-                 <img src="logo.jpg" alt="Logo Arte Ninja Barbearia" class="h-12 w-12 rounded-full object-cover">
-                 <span class="text-xl font-teko font-bold text-gold tracking-wider uppercase">
-                     Arte Ninja Barbearia
-                 </span>
-             </a>
-             
-             <div class="hidden md:flex items-center space-x-6">
-                 <div class="flex items-center space-x-6 text-sm uppercase font-medium">
-                     <a href="#home" class="hover:text-gold transition-colors">Início</a>
-                     <a href="#sobre" class="hover:text-gold transition-colors">Sobre</a>
-                     <a href="#servicos" class="hover:text-gold transition-colors">Serviços</a>
-                     <a href="#galeria" class="hover:text-gold transition-colors">Galeria</a>
-                     <a href="#curso" class="hover:text-gold transition-colors">Curso</a>
-                     <a href="#contato" class="hover:text-gold transition-colors">Contato</a>
-                 </div>
-                 <a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="btn btn-gold text-sm">
-                     Agendar
-                 </a>
-             </div>
-
-             <div class="md:hidden">
-                 <button id="menu-btn" class="text-white focus:outline-none">
-                     <i class="fas fa-bars fa-lg"></i>
-                 </button>
-             </div>
+            <a href="#" class="flex items-center space-x-3">
+                <img src="logo.jpg" alt="Logo Arte Ninja Barbearia" class="h-12 w-12 rounded-full object-cover">
+                <span class="text-xl font-teko font-bold text-gold tracking-wider uppercase">Arte Ninja Barbearia</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <div class="flex items-center space-x-6 text-sm uppercase font-medium">
+                    <a href="#home" class="hover:text-gold transition-colors">Início</a>
+                    <a href="#sobre" class="hover:text-gold transition-colors">Sobre</a>
+                    <a href="#servicos" class="hover:text-gold transition-colors">Serviços</a>
+                    <a href="#galeria" class="hover:text-gold transition-colors">Galeria</a>
+                    <a href="#curso" class="hover:text-gold transition-colors">Curso</a>
+                    <a href="#contato" class="hover:text-gold transition-colors">Contato</a>
+                </div>
+                <a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="btn btn-gold text-sm">Agendar</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#home" class="block py-2 px-6 text-sm hover:bg-card-bg transition-colors">Início</a>
@@ -126,9 +94,7 @@
             <a href="#curso" class="block py-2 px-6 text-sm hover:bg-card-bg transition-colors">Curso</a>
             <a href="#contato" class="block py-2 px-6 text-sm hover:bg-card-bg transition-colors">Contato</a>
             <div class="px-4 pt-3 pb-4">
-                 <a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="block w-full text-center btn btn-gold text-sm">
-                     Agendar
-                 </a>
+                <a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="block w-full text-center btn btn-gold text-sm">Agendar</a>
             </div>
         </div>
     </header>
@@ -151,10 +117,17 @@
                     <p class="mt-4 text-text-muted">Nosso ambiente é descontraído, com atendimento personalizado para realçar seu estilo. Venha renovar seu visual com quem entende de beleza e estilo.</p>
                 </div>
                 <div class="relative h-96 md:h-96 rounded-lg overflow-hidden shadow-2xl">
-                    <!-- ALTERAÇÃO: Atributo 'controls' adicionado para mostrar os controles do vídeo -->
-                    <video id="sobre-video" autoplay loop muted playsinline controls class="w-full h-full object-cover">
-                         <source data-src="video.mp4" type="video/mp4">
-                         Seu navegador não suporta a tag de vídeo.
+                    <video
+                        id="sobre-video"
+                        class="w-full h-full object-cover"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        controls
+                        preload="metadata">
+                        <source data-src="video.mp4" type="video/mp4">
+                        Seu navegador não suporta a tag de vídeo.
                     </video>
                 </div>
             </div>
@@ -170,12 +143,12 @@
                         <h3 class="font-teko text-3xl font-semibold mt-4">Cortes</h3>
                         <p class="text-text-muted mt-2">Do clássico ao moderno, degradê, social, tesoura. Nossos ninjas dominam todas as técnicas.</p>
                     </div>
-                     <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
+                    <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
                         <i class="fas fa-spa text-4xl text-gold"></i>
                         <h3 class="font-teko text-3xl font-semibold mt-4">Barba & Rosto</h3>
                         <p class="text-text-muted mt-2">Barba modelada, terapia, design de sobrancelhas e hidratação para um visual impecável.</p>
                     </div>
-                     <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
+                    <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
                         <i class="fas fa-brush text-4xl text-gold"></i>
                         <h3 class="font-teko text-3xl font-semibold mt-4">Tratamentos</h3>
                         <p class="text-text-muted mt-2">Progressiva, platinado, luzes, relaxamento e tratamentos capilares para renovar seu estilo.</p>
@@ -185,23 +158,22 @@
         </section>
 
         <section id="galeria" class="py-16 md:py-24" style="background-color: var(--darker-bg);">
-             <div class="container mx-auto px-6">
-                 <div class="text-center">
-                     <h2 class="section-title">Galeria</h2>
-                     <p class="section-subtitle max-w-2xl mx-auto">Confira um pouco do nosso trabalho e do nosso ambiente.</p>
-                 </div>
-                 <div class="relative mt-12 overflow-hidden cursor-grab" id="carousel-container">
-                     <div id="carousel-track" class="flex no-scrollbar overflow-x-auto">
-                         </div>
-                 </div>
-             </div>
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="section-title">Galeria</h2>
+                    <p class="section-subtitle max-w-2xl mx-auto">Confira um pouco do nosso trabalho e do nosso ambiente.</p>
+                </div>
+                <div class="relative mt-12 overflow-hidden cursor-grab" id="carousel-container">
+                    <div id="carousel-track" class="flex no-scrollbar overflow-x-auto"></div>
+                </div>
+            </div>
         </section>
 
         <section id="curso" class="py-16 md:py-24" style="background-color: var(--dark-bg);">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                 <div class="relative h-96 md:h-auto rounded-lg overflow-hidden shadow-2xl">
-                     <img src="10.jpg" loading="lazy" alt="Curso de Barbeiro" class="w-full h-full object-cover">
-                 </div>
+                <div class="relative h-96 md:h-auto rounded-lg overflow-hidden shadow-2xl">
+                    <img src="10.jpg" loading="lazy" alt="Curso de Barbeiro" class="w-full h-full object-cover">
+                </div>
                 <div>
                     <h2 class="section-title">Curso de Barbeiro Iniciante</h2>
                     <p class="mt-4 text-text-muted font-semibold">CONTEÚDO MINISTRADO (TEÓRICO E PRÁTICO)</p>
@@ -217,9 +189,7 @@
                         <p class="font-semibold">Duração: <span class="text-gold">01 Mês</span></p>
                         <p class="font-semibold">Aulas: <span class="text-gold">2x por semana (Segunda e Quarta, das 09h às 13h)</span></p>
                     </div>
-                    <a href="https://api.whatsapp.com/send?phone=5561991889590&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20curso%20de%20barbeiro." target="_blank" class="btn btn-gold mt-6">
-                        Quero Saber Mais
-                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5561991889590&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20curso%20de%20barbeiro." target="_blank" class="btn btn-gold mt-6">Quero Saber Mais</a>
                 </div>
             </div>
         </section>
@@ -227,20 +197,20 @@
         <section id="depoimentos" class="py-16 md:py-24" style="background-color: var(--darker-bg);">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                     <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
                         <div class="text-gold text-lg mb-4">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="text-text-muted italic">"Ótimo lugar, com ótimos funcionários!"</p>
                     </div>
-                     <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
+                    <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
                         <div class="text-gold text-lg mb-4">
-                           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="text-text-muted italic">"Melhor barbearia da cidade, ótimo atendimento, profissionais muito qualificados."</p>
                     </div>
-                     <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
+                    <div class="bg-card-bg p-8 rounded-lg text-center border border-transparent hover:border-gold transition-all duration-300">
                         <div class="text-gold text-lg mb-4">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
@@ -258,16 +228,16 @@
                 </div>
                 <div class="mt-12 grid md:grid-cols-2 gap-16">
                     <div class="relative rounded-lg overflow-hidden shadow-2xl h-[500px]">
-                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.880816650481!2d-47.78855418898159!3d-15.757132123307525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b0e457f7223%3A0x60010e9f0611d041!2sArte%20Ninja%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1716928036040!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-black/70 backdrop-blur-sm">
-                             <div class="flex justify-between items-center">
-                                 <div>
-                                     <h4 class="font-bold text-white">Arte Ninja Barbearia</h4>
-                                     <p class="text-xs text-text-muted">Q 21, Paranoá, Brasília - DF</p>
-                                 </div>
-                                 <a href="https://www.google.com/maps/dir/?api=1&destination=Arte+Ninja+Barbearia+Paranoa+Brasilia+DF" target="_blank" class="btn btn-gold py-2 px-4 text-xs">Traçar Rota</a>
-                             </div>
-                         </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.880816650481!2d-47.78855418898159!3d-15.757132123307525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b0e457f7223%3A0x60010e9f0611d041!2sArte%20Ninja%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1716928036040!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-black/70 backdrop-blur-sm">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-white">Arte Ninja Barbearia</h4>
+                                    <p class="text-xs text-text-muted">Q 21, Paranoá, Brasília - DF</p>
+                                </div>
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Arte+Ninja+Barbearia+Paranoa+Brasilia+DF" target="_blank" class="btn btn-gold py-2 px-4 text-xs">Traçar Rota</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="bg-card-bg p-8 rounded-lg">
                         <h3 class="font-teko text-3xl text-white font-semibold mb-6">Informações</h3>
@@ -279,9 +249,9 @@
                                 <p>Segunda a Sábado:</p><p class="text-right">09:00 - 19:00</p>
                                 <p>Domingo:</p><p class="text-right">09:00 - 13:00</p>
                             </div>
-                             <div class="pt-6">
-                                 <a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="btn btn-gold w-full text-center">Agendar Online</a>
-                             </div>
+                            <div class="pt-6">
+                                <a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="btn btn-gold w-full text-center">Agendar Online</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -292,22 +262,22 @@
     <footer class="bg-black py-12 section-divider">
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-text-muted text-sm">
             <div>
-                 <h4 class="font-teko text-2xl text-gold font-semibold mb-4 uppercase">Arte Ninja Barbearia</h4>
-                 <p>Barbearia moderna com ambiente premium e profissionais experientes, oferecendo os melhores cortes e tratamentos.</p>
-                 <div class="flex space-x-4 mt-4">
-                     <a href="https://www.instagram.com/arteninjabarbearia/" target="_blank" class="hover:text-gold"><i class="fab fa-instagram fa-lg"></i></a>
-                     <a href="https://www.facebook.com/people/Arte-Ninja-Barbearia/100069547926098/#" target="_blank" class="hover:text-gold"><i class="fab fa-facebook-f fa-lg"></i></a>
-                     <a href="https://g.co/kgs/Pe9RTVb" target="_blank" class="hover:text-gold"><i class="fab fa-google fa-lg"></i></a>
-                 </div>
+                <h4 class="font-teko text-2xl text-gold font-semibold mb-4 uppercase">Arte Ninja Barbearia</h4>
+                <p>Barbearia moderna com ambiente premium e profissionais experientes, oferecendo os melhores cortes e tratamentos.</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.instagram.com/arteninjabarbearia/" target="_blank" class="hover:text-gold"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="https://www.facebook.com/people/Arte-Ninja-Barbearia/100069547926098/#" target="_blank" class="hover:text-gold"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="https://g.co/kgs/Pe9RTVb" target="_blank" class="hover:text-gold"><i class="fab fa-google fa-lg"></i></a>
+                </div>
             </div>
             <div>
-                 <h4 class="font-teko text-xl text-white font-semibold mb-4 uppercase">Links Rápidos</h4>
-                 <ul class="space-y-2">
-                     <li><a href="#sobre" class="hover:text-gold">Sobre</a></li>
-                     <li><a href="#servicos" class="hover:text-gold">Serviços</a></li>
-                     <li><a href="#galeria" class="hover:text-gold">Galeria</a></li>
-                     <li><a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="hover:text-gold">Agendamento</a></li>
-                 </ul>
+                <h4 class="font-teko text-xl text-white font-semibold mb-4 uppercase">Links Rápidos</h4>
+                <ul class="space-y-2">
+                    <li><a href="#sobre" class="hover:text-gold">Sobre</a></li>
+                    <li><a href="#servicos" class="hover:text-gold">Serviços</a></li>
+                    <li><a href="#galeria" class="hover:text-gold">Galeria</a></li>
+                    <li><a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="hover:text-gold">Agendamento</a></li>
+                </ul>
             </div>
             <div>
                 <h4 class="font-teko text-xl text-white font-semibold mb-4 uppercase">Contato</h4>
@@ -317,121 +287,87 @@
                 </ul>
             </div>
         </div>
-         <div class="container mx-auto px-6 mt-8 pt-8 border-t border-gray-800 text-center text-xs">
-             <p>© 2025 Arte Ninja Barbearia. Todos os direitos reservados. CNPJ: 29.449.053/0001-76</p>
-         </div>
+        <div class="container mx-auto px-6 mt-8 pt-8 border-t border-gray-800 text-center text-xs">
+            <p>© 2025 Arte Ninja Barbearia. Todos os direitos reservados. CNPJ: 29.449.053/0001-76</p>
+        </div>
     </footer>
 
     <a href="https://api.whatsapp.com/send?phone=5561992899002&text=Oi,%20vim%20pelo%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg transform transition hover:scale-110">
         <i class="fab fa-whatsapp fa-2x"></i>
     </a>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Lógica para o menu mobile
+            // Mobile menu
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            mobileMenu.querySelectorAll('a').forEach(link =>
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'))
+            );
 
-            if (menuBtn) {
-                menuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
-
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-
-            // Lógica para o carrossel da galeria
+            // Galeria carousel
             const carouselContainer = document.getElementById('carousel-container');
-            if(carouselContainer) {
+            if (carouselContainer) {
                 const track = document.getElementById('carousel-track');
-                const images = ['9.jpg', '8.jpg', '7.jpg', '6.jpg', '5.jpg', '3.jpg', '1.jpg'];
-                
-                const allImages = [...images, ...images];
-
-                allImages.forEach(src => {
+                const images = ['9.jpg','8.jpg','7.jpg','6.jpg','5.jpg','3.jpg','1.jpg'];
+                const all = [...images, ...images];
+                all.forEach(src => {
                     const div = document.createElement('div');
                     div.className = 'flex-shrink-0 w-4/5 sm:w-1/2 md:w-1/3 p-1 cursor-grab';
                     const img = document.createElement('img');
-                    img.src = src;
-                    img.loading = 'lazy';
+                    img.src = src; img.loading = 'lazy';
                     img.className = 'w-full h-64 md:h-80 object-cover rounded-lg shadow-lg pointer-events-none';
                     div.appendChild(img);
                     track.appendChild(div);
                 });
-                
-                track.classList.add('overflow-x-auto', 'no-scrollbar');
+                track.classList.add('overflow-x-auto','no-scrollbar');
 
                 track.addEventListener('scroll', () => {
-                    const halfWidth = track.scrollWidth / 2;
-                    if (track.scrollLeft >= halfWidth) {
-                        track.scrollLeft -= halfWidth;
-                    } else if (track.scrollLeft <= 0) {
-                        track.scrollLeft += halfWidth;
-                    }
+                    const half = track.scrollWidth/2;
+                    if (track.scrollLeft >= half) track.scrollLeft -= half;
+                    if (track.scrollLeft <= 0) track.scrollLeft += half;
                 });
-
-                let isDown = false;
-                let startX;
-                let scrollLeft;
-
-                const startDragging = (e) => {
-                  isDown = true;
-                  track.classList.add('cursor-grabbing');
-                  startX = (e.pageX || e.touches[0].pageX) - track.offsetLeft;
-                  scrollLeft = track.scrollLeft;
-                };
-
-                const stopDragging = () => {
-                  isDown = false;
-                  track.classList.remove('cursor-grabbing');
-                };
-
-                const drag = (e) => {
-                  if(!isDown) return;
-                  e.preventDefault();
-                  const x = (e.pageX || e.touches[0].pageX) - track.offsetLeft;
-                  const walk = (x - startX) * 1; 
-                  track.scrollLeft = scrollLeft - walk;
-                };
-
-                track.addEventListener('mousedown', startDragging);
-                track.addEventListener('mouseleave', stopDragging);
-                track.addEventListener('mouseup', stopDragging);
-                track.addEventListener('mousemove', drag);
-                
-                track.addEventListener('touchstart', startDragging, { passive: true });
-                track.addEventListener('touchend', stopDragging);
-                track.addEventListener('touchmove', drag, { passive: false });
+                let isDown=false, startX, scrollLeft;
+                track.addEventListener('mousedown', e => {
+                    isDown=true; track.classList.add('cursor-grabbing');
+                    startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+                });
+                track.addEventListener('mouseleave', () => { isDown=false; track.classList.remove('cursor-grabbing'); });
+                track.addEventListener('mouseup',   () => { isDown=false; track.classList.remove('cursor-grabbing'); });
+                track.addEventListener('mousemove', e => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - track.offsetLeft;
+                    const walk = (x - startX)*1;
+                    track.scrollLeft = scrollLeft - walk;
+                });
+                track.addEventListener('touchstart', e => {
+                    isDown=true; startX = e.touches[0].pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+                }, { passive: true });
+                track.addEventListener('touchend',   () => { isDown=false; });
+                track.addEventListener('touchmove',  e => {
+                    if (!isDown) return;
+                    const x = e.touches[0].pageX - track.offsetLeft;
+                    track.scrollLeft = scrollLeft - (x - startX);
+                }, { passive: false });
             }
 
-            // LAZY LOADING PARA VÍDEO com AUTOPLAY
+            // Lazy-load + autoplay do vídeo
             const video = document.getElementById('sobre-video');
             if (video) {
-                const videoSource = video.querySelector('source');
-
-                const videoObserver = new IntersectionObserver((entries, observer) => {
+                const src = video.querySelector('source');
+                const obs = new IntersectionObserver((entries, o) => {
                     entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            if (videoSource && videoSource.dataset.src) {
-                                videoSource.src = videoSource.dataset.src;
-                                video.load();
-                                // ALTERAÇÃO: Adicionado video.play() para garantir o autoplay em todos os dispositivos
-                                video.play().catch(error => {
-                                    // A reprodução automática foi bloqueada, o usuário precisará iniciar manualmente.
-                                    console.log("Autoplay bloqueado:", error);
-                                });
-                                observer.unobserve(entry.target);
-                            }
+                        if (entry.isIntersecting && src.dataset.src) {
+                            src.src = src.dataset.src;
+                            video.load();
+                            video.play().catch(err => console.log('Autoplay bloqueado:', err));
+                            o.unobserve(video);
                         }
                     });
-                }, { threshold: 0.5 }); 
-
-                videoObserver.observe(video);
+                }, { threshold: 0.5 });
+                obs.observe(video);
             }
         });
     </script>
