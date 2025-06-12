@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arte Ninja Barbearia</title>
-
-    <!-- 
-      OTIMIZAÇÃO DE PERFORMANCE (LCP E CLS)
-      - Preload da imagem principal (LCP) no formato WebP, que é mais leve.
-      - Preconnect para os domínios de fontes para acelerar a conexão.
-      - Carregamento síncrono das fontes e ícones para evitar o "salto" de layout (CLS). 
-    -->
+    
     <link rel="preload" as="image" href="11.webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Teko:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         :root {
@@ -31,8 +26,6 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-light);
-            /* Garante que o fundo não 'pisque' em branco durante o carregamento inicial */
-            background-color: var(--dark-bg);
         }
         .font-teko { font-family: 'Teko', sans-serif; }
         .bg-gold { background-color: var(--gold); }
@@ -67,6 +60,15 @@
         .section-divider { border-top: 1px solid var(--border-color); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Estilo para o botão de rota */
+        .route-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
     </style>
 </head>
 <body class="bg-dark-bg text-text-light">
@@ -75,7 +77,6 @@
     <header class="bg-dark-bg/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-lg shadow-black/20">
         <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-3">
-                <!-- OTIMIZAÇÃO: Imagem da logo agora aponta diretamente para a versão .webp -->
                 <img src="logo.webp" alt="Logo Arte Ninja Barbearia" class="h-12 w-12 rounded-full object-cover">
                 <span class="text-xl font-teko font-bold text-gold tracking-wider uppercase">Arte Ninja Barbearia</span>
             </a>
@@ -112,10 +113,10 @@
 
         <!-- HOME -->
         <section id="home" class="relative h-[80vh] md:h-screen -mt-[80px] flex items-center overflow-hidden">
-             <!-- OTIMIZAÇÃO: A tag <picture> foi removida, usando <img> diretamente com a fonte .webp. -->
+            <!-- IMAGEM DE FUNDO: Altere o valor em object-[center_30%] para ajustar a posição vertical. Ex: 20%, 40%, etc. -->
             <img src="11.webp" 
                  alt="Barbeiro finalizando um corte de cabelo estiloso em um cliente" 
-                 class="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+                 class="absolute top-0 left-0 w-full h-full object-cover z-[-1] object-[center_30%]"
                  fetchpriority="high">
             <div class="absolute top-0 left-0 w-full h-full bg-black/60 z-[-1]"></div>
             
@@ -145,7 +146,6 @@
                         webkit-playsinline
                         controls
                         preload="metadata">
-                        <!-- O atributo src foi removido e será carregado via JS para otimização -->
                         <source data-src="video.mp4" type="video/mp4">
                         Seu navegador não suporta a tag de vídeo.
                     </video>
@@ -195,7 +195,6 @@
         <section id="curso" class="py-16 md:py-24" style="background-color: var(--dark-bg);">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
                 <div class="relative h-96 md:h-auto rounded-lg overflow-hidden shadow-2xl">
-                    <!-- OTIMIZAÇÃO: Imagem do curso agora aponta diretamente para a versão .webp -->
                     <img src="10.webp" loading="lazy" alt="Barbeiro ensinando um aluno durante o curso de barbeiro" class="w-full h-full object-cover">
                 </div>
                 <div>
@@ -255,6 +254,12 @@
                 <div class="mt-12 grid md:grid-cols-2 gap-16">
                     <div class="relative rounded-lg overflow-hidden shadow-2xl h-[500px]">
                         <iframe title="Localização no Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.880816650481!2d-47.78855418898159!3d-15.757132123307525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b0e457f7223%3A0x60010e9f0611d041!2sArte%20Ninja%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1716928036040!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- Botão de traçar rota -->
+                        <a href="https://www.google.com/maps/dir//Arte+Ninja+Barbearia,+Q+21+Quadra+21+Conjunto+A+lote+23+Lj+02+-+Parano%C3%A1,+Bras%C3%ADlia+-+DF,+71572-101/@-15.7571321,-47.7885542,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x935a3b0e457f7223:0x60010e9f0611d041!2m2!1d-47.786365!2d-15.757132!3e0?entry=ttu" 
+                           target="_blank" 
+                           class="route-btn btn btn-gold">
+                            <i class="fas fa-route mr-2"></i>Traçar Rota
+                        </a>
                     </div>
                     <div class="bg-card-bg p-8 rounded-lg">
                         <h3 class="font-teko text-3xl text-white font-semibold mb-6">Informações</h3>
@@ -315,14 +320,10 @@
     <a href="https://api.whatsapp.com/send?phone=5561992899002&text=Oi,%20vim%20pelo%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg transform transition hover:scale-110">
         <i class="fab fa-whatsapp fa-2x"></i>
     </a>
-
-    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- SCRIPTS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Lógica otimizada para os scripts da página
-            
             // Menu mobile
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -340,13 +341,12 @@
                 const imageNames = ['9','8','7','6','5','3','1'];
                 const allImages = [...imageNames, ...imageNames]; 
 
-                // OTIMIZAÇÃO: Lógica simplificada para criar apenas tags <img> com fontes .webp
                 allImages.forEach(name => {
                     const div = document.createElement('div');
                     div.className = 'flex-shrink-0 w-4/5 sm:w-1/2 md:w-1/3 p-1';
                     
                     const img = document.createElement('img');
-                    img.src = `${name}.webp`; // Simplificado para usar apenas WebP
+                    img.src = `${name}.webp`;
                     img.loading = 'lazy'; 
                     img.alt = `Corte de cabelo da galeria Arte Ninja Barbearia`; 
                     img.className = 'w-full h-64 md:h-80 object-cover rounded-lg shadow-lg';
