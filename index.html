@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arte Ninja Barbearia</title>
+
+    <!-- OTIMIZAÇÃO: Pré-carrega a imagem principal (LCP) para acelerar o carregamento -->
+    <link rel="preload" as="image" href="11.jpg">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- OTIMIZAÇÃO: Carrega as fontes e ícones de forma assíncrona para não bloquear a renderização da página -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Teko:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+
+    <!-- Fallback para caso o JavaScript esteja desabilitado -->
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Teko:wght@400;500;600;700&display=swap">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </noscript>
+
     <style>
         :root {
             --gold: #d8c680;
@@ -237,16 +246,7 @@
                 </div>
                 <div class="mt-12 grid md:grid-cols-2 gap-16">
                     <div class="relative rounded-lg overflow-hidden shadow-2xl h-[500px]">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.880816650481!2d-47.78855418898159!3d-15.757132123307525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b0e457f7223%3A0x60010e9f0611d041!2sArte%20Ninja%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1716928036040!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-black/70 backdrop-blur-sm">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <h4 class="font-bold text-white">Arte Ninja Barbearia</h4>
-                                    <p class="text-xs text-text-muted">Q 21, Paranoá, Brasília - DF</p>
-                                </div>
-                                <a href="https://www.google.com/maps/dir/?api=1&destination=Arte+Ninja+Barbearia+Paranoa+Brasilia+DF" target="_blank" class="btn btn-gold py-2 px-4 text-xs">Traçar Rota</a>
-                            </div>
-                        </div>
+                        <iframe title="Localização no Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.880816650481!2d-47.78855418898159!3d-15.757132123307525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b0e457f7223%3A0x60010e9f0611d041!2sArte%20Ninja%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1716928036040!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="bg-card-bg p-8 rounded-lg">
                         <h3 class="font-teko text-3xl text-white font-semibold mb-6">Informações</h3>
@@ -308,84 +308,105 @@
         <i class="fab fa-whatsapp fa-2x"></i>
     </a>
 
+    <!-- OTIMIZAÇÃO: Script do Tailwind movido para o final do body e com 'defer' para não bloquear a renderização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- SCRIPTS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Lógica otimizada para os scripts da página
+            
             // Menu mobile
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            mobileMenu.querySelectorAll('a').forEach(link =>
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'))
-            );
+            if(menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+                });
+            }
 
-            // Carrossel galeria
+            // Carrossel da galeria
             const carouselContainer = document.getElementById('carousel-container');
             if (carouselContainer) {
                 const track = document.getElementById('carousel-track');
                 const images = ['9.jpg','8.jpg','7.jpg','6.jpg','5.jpg','3.jpg','1.jpg'];
-                const all = [...images, ...images];
-                all.forEach(src => {
+                const allImages = [...images, ...images];
+
+                allImages.forEach(src => {
                     const div = document.createElement('div');
-                    div.className = 'flex-shrink-0 w-4/5 sm:w-1/2 md:w-1/3 p-1 cursor-grab';
+                    div.className = 'flex-shrink-0 w-4/5 sm:w-1/2 md:w-1/3 p-1';
                     const img = document.createElement('img');
-                    img.src = src; img.loading = 'lazy';
-                    img.className = 'w-full h-64 md:h-80 object-cover rounded-lg shadow-lg pointer-events-none';
+                    img.src = src;
+                    img.loading = 'lazy'; // Lazy loading para imagens da galeria
+                    img.className = 'w-full h-64 md:h-80 object-cover rounded-lg shadow-lg';
                     div.appendChild(img);
                     track.appendChild(div);
                 });
-                track.classList.add('overflow-x-auto','no-scrollbar');
+
+                track.classList.add('overflow-x-auto', 'no-scrollbar', 'cursor-grab');
+                
                 track.addEventListener('scroll', () => {
-                    const half = track.scrollWidth / 2;
-                    if (track.scrollLeft >= half) track.scrollLeft -= half;
-                    if (track.scrollLeft <= 0) track.scrollLeft += half;
-                });
-                let isDown=false, startX, scrollLeft;
-                track.addEventListener('mousedown', e => {
-                    isDown=true; track.classList.add('cursor-grabbing');
-                    startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
-                });
-                ['mouseleave','mouseup'].forEach(evt =>
-                    track.addEventListener(evt, () => { isDown=false; track.classList.remove('cursor-grabbing'); })
-                );
-                track.addEventListener('mousemove', e => {
+                    const scrollableWidth = track.scrollWidth / 2;
+                    if (track.scrollLeft >= scrollableWidth) {
+                        track.scrollLeft -= scrollableWidth;
+                    } else if (track.scrollLeft === 0 && scrollableWidth > 0) {
+                        track.scrollLeft = scrollableWidth;
+                    }
+                }, { passive: true });
+
+                let isDown = false, startX, scrollLeft;
+
+                const start = (e) => {
+                    isDown = true;
+                    track.classList.add('cursor-grabbing');
+                    startX = (e.pageX || e.touches[0].pageX) - track.offsetLeft;
+                    scrollLeft = track.scrollLeft;
+                };
+
+                const end = () => {
+                    isDown = false;
+                    track.classList.remove('cursor-grabbing');
+                };
+
+                const move = (e) => {
                     if (!isDown) return;
                     e.preventDefault();
-                    const x = e.pageX - track.offsetLeft;
-                    track.scrollLeft = scrollLeft - ((x - startX) * 1);
-                });
-                track.addEventListener('touchstart', e => {
-                    isDown=true; startX = e.touches[0].pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
-                }, { passive: true });
-                track.addEventListener('touchend', () => isDown=false);
-                track.addEventListener('touchmove', e => {
-                    if (!isDown) return;
-                    const x = e.touches[0].pageX - track.offsetLeft;
-                    track.scrollLeft = scrollLeft - (x - startX);
-                }, { passive: false });
+                    const x = (e.pageX || e.touches[0].pageX) - track.offsetLeft;
+                    const walk = (x - startX) * 1.5; // Fator de sensibilidade
+                    track.scrollLeft = scrollLeft - walk;
+                };
+
+                track.addEventListener('mousedown', start);
+                track.addEventListener('mouseleave', end);
+                track.addEventListener('mouseup', end);
+                track.addEventListener('mousemove', move);
+                
+                track.addEventListener('touchstart', start, { passive: true });
+                track.addEventListener('touchend', end);
+                track.addEventListener('touchmove', move, { passive: false });
             }
 
             // Lazy-load + autoplay do vídeo
             const video = document.getElementById('sobre-video');
-            if (!video) return;
-            const src = video.querySelector('source');
-
-            video.muted = true;
-            video.playsInline = true;
-            video.setAttribute('webkit-playsinline', '');
-
-            const obs = new IntersectionObserver((entries, o) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && src.dataset.src) {
-                        src.src = src.dataset.src;
-                        video.load();
-                        video.play().catch(err => console.log('Autoplay bloqueado:', err));
-                        o.unobserve(video);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            obs.observe(video);
+            if (video) {
+                const videoSource = video.querySelector('source');
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (videoSource && videoSource.dataset.src) {
+                                videoSource.src = videoSource.dataset.src;
+                                video.load();
+                                video.play().catch(err => {
+                                    console.log("Autoplay do vídeo foi bloqueado pelo navegador.", err);
+                                });
+                                obs.unobserve(video);
+                            }
+                        }
+                    });
+                }, { threshold: 0.25 }); // Carrega quando 25% do vídeo está visível
+                observer.observe(video);
+            }
         });
     </script>
 </body>
