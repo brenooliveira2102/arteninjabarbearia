@@ -63,6 +63,7 @@
 </head>
 <body class="bg-dark-bg text-text-light">
 
+    <!-- HEADER -->
     <header class="bg-dark-bg/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-lg shadow-black/20">
         <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-3">
@@ -81,9 +82,7 @@
                 <a href="https://sites.appbarber.com.br/arteninjabarbea-73v0" target="_blank" class="btn btn-gold text-sm">Agendar</a>
             </div>
             <div class="md:hidden">
-                <button id="menu-btn" class="text-white focus:outline-none">
-                    <i class="fas fa-bars fa-lg"></i>
-                </button>
+                <button id="menu-btn" class="text-white focus:outline-none"><i class="fas fa-bars fa-lg"></i></button>
             </div>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden">
@@ -99,7 +98,10 @@
         </div>
     </header>
 
+    <!-- MAIN -->
     <main class="pt-[80px]">
+
+        <!-- HOME -->
         <section id="home" class="relative h-[80vh] md:h-screen -mt-[80px] bg-cover bg-center md:bg-[right_29%] flex items-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(11.jpg)">
             <div class="container mx-auto px-6 relative text-center">
                 <h1 class="font-teko text-6xl md:text-8xl font-bold uppercase text-white tracking-wider">Corte & Estilo</h1>
@@ -108,6 +110,7 @@
             </div>
         </section>
 
+        <!-- SOBRE -->
         <section id="sobre" class="py-16 md:py-24" style="background-color: var(--darker-bg);">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
                 <div>
@@ -120,10 +123,11 @@
                     <video
                         id="sobre-video"
                         class="w-full h-full object-cover"
+                        muted
                         autoplay
                         loop
-                        muted
                         playsinline
+                        webkit-playsinline
                         controls
                         preload="metadata">
                         <source data-src="video.mp4" type="video/mp4">
@@ -133,6 +137,7 @@
             </div>
         </section>
 
+        <!-- SERVIÇOS -->
         <section id="servicos" class="py-16 md:py-24" style="background-color: var(--dark-bg);">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="section-title">Nossos Serviços</h2>
@@ -157,6 +162,7 @@
             </div>
         </section>
 
+        <!-- GALERIA -->
         <section id="galeria" class="py-16 md:py-24" style="background-color: var(--darker-bg);">
             <div class="container mx-auto px-6">
                 <div class="text-center">
@@ -169,6 +175,7 @@
             </div>
         </section>
 
+        <!-- CURSO -->
         <section id="curso" class="py-16 md:py-24" style="background-color: var(--dark-bg);">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
                 <div class="relative h-96 md:h-auto rounded-lg overflow-hidden shadow-2xl">
@@ -194,6 +201,7 @@
             </div>
         </section>
 
+        <!-- DEPOIMENTOS -->
         <section id="depoimentos" class="py-16 md:py-24" style="background-color: var(--darker-bg);">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
@@ -220,6 +228,7 @@
             </div>
         </section>
 
+        <!-- CONTATO -->
         <section id="contato" class="py-16 md:py-24" style="background-color: var(--darker-bg);">
             <div class="container mx-auto px-6">
                 <div class="text-center">
@@ -257,8 +266,10 @@
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer class="bg-black py-12 section-divider">
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-text-muted text-sm">
             <div>
@@ -292,13 +303,15 @@
         </div>
     </footer>
 
+    <!-- WHATSAPP FLUTUANTE -->
     <a href="https://api.whatsapp.com/send?phone=5561992899002&text=Oi,%20vim%20pelo%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg transform transition hover:scale-110">
         <i class="fab fa-whatsapp fa-2x"></i>
     </a>
 
+    <!-- SCRIPTS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile menu
+            // Menu mobile
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
@@ -306,7 +319,7 @@
                 link.addEventListener('click', () => mobileMenu.classList.add('hidden'))
             );
 
-            // Galeria carousel
+            // Carrossel galeria
             const carouselContainer = document.getElementById('carousel-container');
             if (carouselContainer) {
                 const track = document.getElementById('carousel-track');
@@ -322,9 +335,8 @@
                     track.appendChild(div);
                 });
                 track.classList.add('overflow-x-auto','no-scrollbar');
-
                 track.addEventListener('scroll', () => {
-                    const half = track.scrollWidth/2;
+                    const half = track.scrollWidth / 2;
                     if (track.scrollLeft >= half) track.scrollLeft -= half;
                     if (track.scrollLeft <= 0) track.scrollLeft += half;
                 });
@@ -333,20 +345,20 @@
                     isDown=true; track.classList.add('cursor-grabbing');
                     startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
                 });
-                track.addEventListener('mouseleave', () => { isDown=false; track.classList.remove('cursor-grabbing'); });
-                track.addEventListener('mouseup',   () => { isDown=false; track.classList.remove('cursor-grabbing'); });
+                ['mouseleave','mouseup'].forEach(evt =>
+                    track.addEventListener(evt, () => { isDown=false; track.classList.remove('cursor-grabbing'); })
+                );
                 track.addEventListener('mousemove', e => {
                     if (!isDown) return;
                     e.preventDefault();
                     const x = e.pageX - track.offsetLeft;
-                    const walk = (x - startX)*1;
-                    track.scrollLeft = scrollLeft - walk;
+                    track.scrollLeft = scrollLeft - ((x - startX) * 1);
                 });
                 track.addEventListener('touchstart', e => {
                     isDown=true; startX = e.touches[0].pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
                 }, { passive: true });
-                track.addEventListener('touchend',   () => { isDown=false; });
-                track.addEventListener('touchmove',  e => {
+                track.addEventListener('touchend', () => isDown=false);
+                track.addEventListener('touchmove', e => {
                     if (!isDown) return;
                     const x = e.touches[0].pageX - track.offsetLeft;
                     track.scrollLeft = scrollLeft - (x - startX);
@@ -355,20 +367,25 @@
 
             // Lazy-load + autoplay do vídeo
             const video = document.getElementById('sobre-video');
-            if (video) {
-                const src = video.querySelector('source');
-                const obs = new IntersectionObserver((entries, o) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && src.dataset.src) {
-                            src.src = src.dataset.src;
-                            video.load();
-                            video.play().catch(err => console.log('Autoplay bloqueado:', err));
-                            o.unobserve(video);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                obs.observe(video);
-            }
+            if (!video) return;
+            const src = video.querySelector('source');
+
+            video.muted = true;
+            video.playsInline = true;
+            video.setAttribute('webkit-playsinline', '');
+
+            const obs = new IntersectionObserver((entries, o) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && src.dataset.src) {
+                        src.src = src.dataset.src;
+                        video.load();
+                        video.play().catch(err => console.log('Autoplay bloqueado:', err));
+                        o.unobserve(video);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            obs.observe(video);
         });
     </script>
 </body>
