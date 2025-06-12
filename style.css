@@ -1,0 +1,54 @@
+:root {
+    --gold: #d8c680;
+    --dark-bg: #121212;
+    --card-bg: #1a1a1a;
+    --darker-bg: #0d0d0d;
+    --text-light: #f0f0f0;
+    --text-muted: #a0a0a0;
+    --border-color: #2a2a2a;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+.font-teko { font-family: 'Teko', sans-serif; }
+.bg-gold { background-color: var(--gold); }
+.text-gold { color: var(--gold); }
+.border-gold { border-color: var(--gold); }
+
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-gold {
+    background-color: var(--gold);
+    color: var(--dark-bg);
+}
+
+.btn-gold:hover {
+    background-color: #c9b56f;
+    transform: translateY(-2px);
+}
+
+.section-title {
+    font-family: 'Teko', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.section-subtitle { color: var(--text-muted); }
+.section-divider { border-top: 1px solid var(--border-color); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
