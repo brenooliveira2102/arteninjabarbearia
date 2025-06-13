@@ -13,17 +13,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselContainer = document.getElementById('carousel-container');
     if (carouselContainer) {
         const track = document.getElementById('carousel-track');
-        const imageNames = ['9','8','7','6','5','3','1'];
+        const imageNames = ['9','8','7','6','5','3','1']; // Nomes dos seus arquivos de imagem
         const allImages = [...imageNames, ...imageNames]; 
 
-        allImages.forEach(name => {
+        // [MELHORIA SEO APLICADA] Array com descrições específicas para as imagens
+        const descricoesAlt = [
+          "Corte degradê masculino na Arte Ninja Barbearia no Paranoá",
+          "Barba modelada e finalizada por barbeiro profissional",
+          "Cabelo platinado masculino, um dos nossos tratamentos especiais",
+          "Corte de cabelo social clássico feito na tesoura",
+          "Cliente recebendo um corte de cabelo moderno no Paranoá DF",
+          "Barbeiro finalizando um penteado estiloso",
+          "Detalhe de um corte de cabelo com navalha"
+        ];
+
+        allImages.forEach((name, index) => {
             const div = document.createElement('div');
             div.className = 'flex-shrink-0 w-4/5 sm:w-1/2 md:w-1/3 p-1';
             
             const img = document.createElement('img');
             img.src = `${name}.webp`;
             img.loading = 'lazy'; 
-            img.alt = `Corte de cabelo da galeria Arte Ninja Barbearia`; 
+            // [MELHORIA SEO APLICADA] Atribui um alt text descritivo e variado para cada imagem
+            img.alt = descricoesAlt[index % descricoesAlt.length]; 
             img.className = 'w-full h-64 md:h-80 object-cover rounded-lg shadow-lg';
             
             div.appendChild(img);
@@ -32,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         track.classList.add('overflow-x-auto', 'no-scrollbar', 'cursor-grab');
         
+        // Lógica para o scroll infinito
         track.addEventListener('scroll', () => {
             const scrollableWidth = track.scrollWidth / 2;
             if (track.scrollLeft >= scrollableWidth) {
@@ -41,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
+        // Lógica para arrastar (mouse e toque)
         let isDown = false, startX, scrollLeft;
 
         const start = (e) => {
